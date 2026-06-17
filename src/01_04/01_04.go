@@ -87,7 +87,7 @@ func cryptoScore(text []byte) int {
 			score += 3
 		}
 
-		if ch == '.' && ch == ',' {
+		if ch == '.' || ch == ',' {
 			score += 1
 		}
 		
