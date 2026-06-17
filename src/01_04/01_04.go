@@ -3,10 +3,10 @@
 package main
 
 import (
-	"os"
-	"fmt"
-	"encoding/hex"
 	"bufio"
+	"encoding/hex"
+	"fmt"
+	"os"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 		fmt.Errorf("[ERROR] Could not open the text file: %v\n", err)
 		return
 	}
-	
+
 	defer f.Close()
 
 	var bestScore int
@@ -23,7 +23,7 @@ func main() {
 	var plaintext string
 	var lineNum int = 1
 	var original string
-	
+
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -46,14 +46,14 @@ func main() {
 
 	fmt.Printf("Most likely to be the key: %c (ASCII %d)\n", bestKey, bestKey)
 	fmt.Printf("Corresponding plaintext: %s", plaintext)
-	fmt.Printf("From: %s (line %d)\n", original, lineNum)	
+	fmt.Printf("From: %s (line %d)\n", original, lineNum)
 }
 
 func solveSingleByteXor(ciphertext []byte) (byte, string, int) {
 	var bestKey byte
 	var bestScore int
 	var bestPlaintext []byte
-	
+
 	for key := 0; key < 256; key++ {
 		plaintext := make([]byte, len(ciphertext))
 
@@ -78,7 +78,7 @@ func cryptoScore(text []byte) int {
 		if ch >= 'A' && ch <= 'Z' {
 			score += 1
 		}
-		
+
 		if ch >= 'a' && ch <= 'z' {
 			score += 2
 		}
@@ -90,11 +90,11 @@ func cryptoScore(text []byte) int {
 		if ch == '.' || ch == ',' {
 			score += 1
 		}
-		
+
 		if (ch < 32 || ch > 126) && ch != '\t' && ch != '\n' {
 			score -= 10
 		}
 	}
-	
+
 	return score
 }

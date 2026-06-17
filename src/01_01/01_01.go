@@ -14,7 +14,7 @@ func main() {
 	if err != nil {
 		fmt.Errorf("[ERROR] Could not decode hex from string %s: %v\n", input, err)
 	}
-	
+
 	res := hexToBase64(hex)
 
 	fmt.Println(string(res))

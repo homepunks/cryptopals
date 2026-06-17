@@ -18,14 +18,14 @@ func main() {
 	key, plaintext := solveSingleByteXor(data)
 	fmt.Printf("Most likely to be the key: %c (ASCII %d)\n", key, key)
 	fmt.Printf("Corresponding plaintext: %s\n", plaintext)
-	
+
 }
 
 func solveSingleByteXor(ciphertext []byte) (byte, string) {
 	var bestKey byte
 	var bestScore int
 	var bestPlaintext []byte
-	
+
 	for key := 0; key < 256; key++ {
 		plaintext := make([]byte, len(ciphertext))
 
@@ -51,7 +51,7 @@ func cryptoScore(text []byte) int {
 		if ch >= 'A' && ch <= 'Z' {
 			score += 1
 		}
-		
+
 		if ch >= 'a' && ch <= 'z' {
 			score += 2
 		}
@@ -63,11 +63,11 @@ func cryptoScore(text []byte) int {
 		if ch == '.' && ch == ',' {
 			score += 1
 		}
-		
+
 		if (ch < 32 || ch > 126) && ch != '\t' && ch != '\n' {
 			score -= 10
 		}
 	}
-	
+
 	return score
 }
