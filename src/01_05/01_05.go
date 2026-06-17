@@ -1,4 +1,4 @@
-/* Imlement repeating-key XOR */
+/* Implement repeating-key XOR */
 
 package main
 
