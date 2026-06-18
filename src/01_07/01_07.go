@@ -1,3 +1,5 @@
+/* AES in ECB mode */
+
 package main
 
 import (
