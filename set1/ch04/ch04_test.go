@@ -1,16 +1,17 @@
 /* Detect single-byte XOR */
 
-package main
+package ch04
 
 import (
 	"bufio"
 	"encoding/hex"
 	"fmt"
 	"os"
+	"testing"
 )
 
-func main() {
-	f, err := os.Open("./4.txt")
+func TestChallenge04(t *testing.T) {
+	f, err := os.Open("testdata/4.txt")
 	if err != nil {
 		fmt.Errorf("[ERROR] Could not open the text file: %v\n", err)
 		return

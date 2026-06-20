@@ -1,13 +1,14 @@
 /* Fixed XOR */
 
-package main
+package ch02
 
 import (
 	"encoding/hex"
 	"fmt"
+	"testing"
 )
 
-func main() {
+func TestChallenge02(t *testing.T) {
 	var input string = "1c0111001f010100061a024b53535009181c"
 	var fixed string = "686974207468652062756c6c277320657965"
 

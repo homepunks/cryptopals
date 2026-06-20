@@ -1,21 +1,22 @@
 /* AES in ECB mode */
 
-package main
+package ch07
 
 import (
+	"crypto/aes"
+	"encoding/base64"
 	"fmt"
 	"os"
-	"encoding/base64"
-	"crypto/aes"
+	"testing"
 )
 
 const (
-	KEY = "YELLOW SUBMARINE"
-	FILE = "./7.txt"
+	KEY       = "YELLOW SUBMARINE"
+	FILE      = "testdata/7.txt"
 	CHUNKSIZE = 128 / 8
 )
 
-func main() {
+func TestChallenge07(t *testing.T) {
 	KEYBYTES := []byte(KEY)
 
 	bytes64, err := os.ReadFile(FILE)
@@ -42,7 +43,7 @@ func main() {
 	plaintext := make([]byte, aes.BlockSize) // just found it
 	chunks := make([][]byte, len(ciphertext)/CHUNKSIZE)
 	for i := 0; i < len(chunks); i++ {
-		chunks[i] = ciphertext[16*i:16*(i+1)]
+		chunks[i] = ciphertext[16*i : 16*(i+1)]
 		block.Decrypt(plaintext, chunks[i])
 		decrypted += string(plaintext)
 	}

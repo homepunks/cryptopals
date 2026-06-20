@@ -1,19 +1,20 @@
 /* Detect AES in ECB mode */
 
-package main
+package ch08
 
 import (
 	"bufio"
 	"encoding/hex"
 	"fmt"
 	"os"
+	"testing"
 )
 
 const (
-	FILE = "./8.txt"
+	FILE = "testdata/8.txt"
 )
 
-func main() {
+func TestChallenge08(t *testing.T) {
 	f, err := os.Open(FILE)
 	if err != nil {
 		fmt.Printf("[ERROR] Could not open file %v: %v\n", FILE, f)
@@ -21,9 +22,8 @@ func main() {
 	}
 	defer f.Close()
 
-	
 	var lines [][]byte
-	sc  := bufio.NewScanner(f)
+	sc := bufio.NewScanner(f)
 	for sc.Scan() {
 		ln := sc.Bytes()
 		dst := make([]byte, hex.DecodedLen(len(ln)))
@@ -32,7 +32,7 @@ func main() {
 			fmt.Printf("[ERROR] Could not decode %v: %v\n", FILE, err)
 			return
 		}
-		
+
 		lines = append(lines, dst[:n])
 	}
 

@@ -1,13 +1,14 @@
 /* Implement repeating-key XOR */
 
-package main
+package ch05
 
 import (
 	"encoding/hex"
 	"fmt"
+	"testing"
 )
 
-func main() {
+func TestChallenge05(t *testing.T) {
 	var key string = "ICE"
 	var input string = `Burning 'em, if you ain't quick and nimble
 I go crazy when I hear a cymbal`

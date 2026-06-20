@@ -1,13 +1,14 @@
 /* Single-byte XOR cipher */
 
-package main
+package ch03
 
 import (
 	"encoding/hex"
 	"fmt"
+	"testing"
 )
 
-func main() {
+func TestChallenge03(t *testing.T) {
 	var inputHex string = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
 	data, err := hex.DecodeString(inputHex)
 	if err != nil {
@@ -60,7 +61,7 @@ func cryptoScore(text []byte) int {
 			score += 3
 		}
 
-		if ch == '.' && ch == ',' {
+		if ch == '.' || ch == ',' {
 			score += 1
 		}
 

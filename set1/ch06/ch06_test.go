@@ -1,16 +1,17 @@
 /* Break repeating-key XOR */
 
-package main
+package ch06
 
 import (
 	"encoding/base64"
 	"fmt"
 	"math"
 	"os"
+	"testing"
 )
 
-func main() {
-	bytes64, err := os.ReadFile("./6.txt")
+func TestChallenge06(t *testing.T) {
+	bytes64, err := os.ReadFile("testdata/6.txt")
 	if err != nil {
 		panic(fmt.Errorf("[ERROR] Could not read the text file: %v\n", err))
 	}
