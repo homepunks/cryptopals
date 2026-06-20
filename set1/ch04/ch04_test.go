@@ -13,7 +13,7 @@ import (
 func TestChallenge04(t *testing.T) {
 	f, err := os.Open("testdata/4.txt")
 	if err != nil {
-		fmt.Errorf("[ERROR] Could not open the text file: %v\n", err)
+		fmt.Printf("[ERROR] Could not open the text file: %v\n", err)
 		return
 	}
 
@@ -30,7 +30,7 @@ func TestChallenge04(t *testing.T) {
 		line := scanner.Text()
 		cipher, err := hex.DecodeString(line)
 		if err != nil {
-			fmt.Errorf("[ERROR] Could not decode %s: %v\n", line, err)
+			fmt.Printf("[ERROR] Could not decode %s: %v\n", line, err)
 			return
 		}
 

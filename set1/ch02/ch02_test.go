@@ -14,12 +14,12 @@ func TestChallenge02(t *testing.T) {
 
 	inputHex, err := hex.DecodeString(input)
 	if err != nil {
-		fmt.Errorf("[ERROR] Could not convert %s to hex: %v\n", input, err)
+		fmt.Printf("[ERROR] Could not convert %s to hex: %v\n", input, err)
 		return
 	}
 	fixedHex, err := hex.DecodeString(fixed)
 	if err != nil {
-		fmt.Errorf("[ERROR] Could not convert %s to hex: %v\n", fixed, err)
+		fmt.Printf("[ERROR] Could not convert %s to hex: %v\n", fixed, err)
 		return
 	}
 
